@@ -1,0 +1,35 @@
+#  General configuration
+
+import:
+  - ~/.config/alacritty/colors.yml
+  - ~/.config/alacritty/fonts.yml
+  
+window:
+  padding:
+    x: 15
+    y: 10 
+
+  decorations: buttonless 
+
+  dynamic_title: true
+
+  history: 10000
+  multiplier: 3
+
+selection:
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    
+  unfocused_hollow: false 
+
+live_config_reload: true
+
+key_bindings:
+  - { key: Comma,     mods: Command,      command:
+      {program: "sh", args: ["-c","open ~/.config/alacritty/alacritty.yml"]}     }
+  - { key: Back, mods: Super, chars: "\x15" }
+  - { key: Left,     mods: Alt,     chars: "\x1bb"                       } # one word left
+  - { key: Right,    mods: Alt,     chars: "\x1bf"                       } # one word right

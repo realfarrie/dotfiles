@@ -1,0 +1,59 @@
+
+BARSIZE=24
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# mission-control desktop labels
+yabai -m space 1 --label dev
+yabai -m space 2 --label www 
+yabai -m space 3 --label sys
+yabai -m space 4 --label doc
+yabai -m space 5 --label skl 
+yabai -m space 6 --label etc 
+yabai -m space 7 --label mus 
+
+# window rules
+yabai -m rule --add app="^Transmission$" space=sys
+yabai -m rule --add app="^(Notes|Obsidian)$" space=doc
+yabai -m rule --add app="^Spotify$" space=mus
+yabai -m rule --add app="^(UTM|Parallels Desktop)$" space=etc
+yabai -m rule --add app="^(Parallels Desktop|The Unarchiver|balenaEtcher|Mullvad VPN|Calculator|System Preferences|Archive Utility|choose|App Store|Steam|Books|Calculator|Clock|Dictionary|Font Book|Image Capture|Photo Booth|Podcasts|System Settings|TV|Weather|Bitwarden)$" manage=off
+yabai -m rule --add app="^(Activity Monitor|UTM|Shottr|Arc *|Brave Browser|Safari|Firefox|Google Chrome|Chromium|Opera GX)$" window_opacity=off 
+
+# global settings
+yabai -m config                              \
+    external_bar                all:$BARSIZE:0     \
+    mouse_follows_focus         off           \
+    focus_follows_mouse         on	         \
+    window_placement            second_child \
+    window_topmost              off          \
+    window_shadow               off          \
+    window_animation_duration   0.05         \
+    window_opacity_duration     0.2          \
+    active_window_opacity       1            \
+    normal_window_opacity       0.85         \
+    window_opacity              on           \
+    insert_feedback_color       0xaad75f5f   \
+    active_window_border_color  0xBFCCAFB1   \
+    normal_window_border_color  0x7f353535   \
+    window_border_width         2            \
+    window_border_radius        12           \
+    window_border_blur          on           \
+    window_border_hidpi         on           \
+    window_border               on           \
+    split_ratio                 0.50         \
+    split_type                  auto         \
+    auto_balance                off          \
+    top_padding                 4            \
+    left_padding                4            \
+    right_padding               4            \
+    bottom_padding              4            \
+    window_gap                  4            \
+    layout                      bsp          \
+    mouse_modifier              fn           \
+    mouse_action1               move         \
+    mouse_action2               resize       \
+    mouse_drop_action           swap
+
+echo "yabai configuration loaded.."
